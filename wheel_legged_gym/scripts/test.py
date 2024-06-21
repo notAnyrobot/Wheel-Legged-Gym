@@ -12,7 +12,7 @@ def test(args):
     # set test environment arguments
     args.task = "wheel_legged"
     args.num_envs = 11
-    args.headless = True
+    # args.headless = True
     
     env, env_cfg = task_registry.make_env(name=args.task, args=args)
     ppo_runner, train_cfg = task_registry.make_alg_runner(
