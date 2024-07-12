@@ -36,10 +36,10 @@ import numpy as np
 from shutil import copyfile
 import ntpath
 
-from wheel_legged_gym.rsl_rl.env.vec_env import VecEnv
-from wheel_legged_gym.rsl_rl.runners.on_policy_runner import OnPolicyRunner
+from environment.learning.env.vec_env import VecEnv
+from environment.learning.runners.on_policy_runner import OnPolicyRunner
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
+from environment import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
 from .helpers import (
     get_args,
     update_cfg_from_args,
@@ -48,7 +48,7 @@ from .helpers import (
     set_seed,
     parse_sim_params,
 )
-from wheel_legged_gym.envs.base.legged_robot_config import (
+from environment.envs.base.legged_robot_config import (
     LeggedRobotCfg,
     LeggedRobotCfgPPO,
 )

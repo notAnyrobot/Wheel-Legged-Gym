@@ -28,7 +28,7 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, envs
+from environment import WHEEL_LEGGED_GYM_ROOT_DIR, envs
 from time import time
 from warnings import WarningMessage
 import numpy as np
@@ -41,15 +41,15 @@ import torch
 from torch import Tensor
 from typing import Tuple, Dict
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR
-from wheel_legged_gym.envs.base.legged_robot import LeggedRobot
-from wheel_legged_gym.utils.terrain import Terrain
-from wheel_legged_gym.utils.math import (
+from environment import WHEEL_LEGGED_GYM_ROOT_DIR
+from environment.envs.base.legged_robot import LeggedRobot
+from environment.utils.terrain import Terrain
+from environment.utils.math import (
     quat_apply_yaw,
     wrap_to_pi,
     torch_rand_sqrt_float,
 )
-from wheel_legged_gym.utils.helpers import class_to_dict
+from environment.utils.helpers import class_to_dict
 from .wheel_legged_vmc_config import WheelLeggedVMCCfg
 
 

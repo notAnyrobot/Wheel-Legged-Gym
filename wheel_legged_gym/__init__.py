@@ -32,5 +32,5 @@ import os
 
 WHEEL_LEGGED_GYM_ROOT_DIR = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 WHEEL_LEGGED_GYM_ENVS_DIR = os.path.join(
-    WHEEL_LEGGED_GYM_ROOT_DIR, "wheel_legged_gym", "envs"
+    WHEEL_LEGGED_GYM_ROOT_DIR, "environment", "envs"
 )

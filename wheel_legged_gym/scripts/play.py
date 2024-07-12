@@ -28,13 +28,13 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR
+from environment import WHEEL_LEGGED_GYM_ROOT_DIR
 import os
 
 import isaacgym
 from isaacgym.torch_utils import *
-from wheel_legged_gym.envs import *
-from wheel_legged_gym.utils import get_args, export_policy_as_jit, task_registry, Logger
+from environment.envs import *
+from environment.utils import get_args, export_policy_as_jit, task_registry, Logger
 
 import numpy as np
 import torch

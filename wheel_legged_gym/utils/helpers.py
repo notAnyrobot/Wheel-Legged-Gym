@@ -36,7 +36,7 @@ import random
 from isaacgym import gymapi
 from isaacgym import gymutil
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
+from environment import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
 
 
 def class_to_dict(obj) -> dict:

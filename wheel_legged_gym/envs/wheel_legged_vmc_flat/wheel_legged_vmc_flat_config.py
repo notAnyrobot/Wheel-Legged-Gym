@@ -28,7 +28,7 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from wheel_legged_gym.envs.wheel_legged_vmc.wheel_legged_vmc_config import (
+from environment.envs.wheel_legged_vmc.wheel_legged_vmc_config import (
     WheelLeggedVMCCfg,
     WheelLeggedVMCCfgPPO,
 )
