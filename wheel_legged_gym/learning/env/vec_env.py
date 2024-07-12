@@ -8,9 +8,9 @@ from abc import ABC, abstractmethod
 
 
 class VecEnv(ABC):
-    """Abstract class for vectorized environment.
+    """Abstract class for vectorized wheel_legged_gym.
 
-    The vectorized environment is a collection of environments that are synchronized. This means that
+    The vectorized wheel_legged_gym is a collection of environments that are synchronized. This means that
     the same action is applied to all environments and the same observation is returned from all environments.
 
     All extra observations must be provided as a dictionary to "extras" in the step() method. Based on the
@@ -64,7 +64,7 @@ class VecEnv(ABC):
 
     @abstractmethod
     def reset(self) -> tuple[torch.Tensor, dict]:
-        """Reset all environment instances.
+        """Reset all wheel_legged_gym instances.
 
         Returns:
             Tuple[torch.Tensor, dict]: Tuple containing the observations and extras.
@@ -73,7 +73,7 @@ class VecEnv(ABC):
 
     @abstractmethod
     def step(self, actions: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, dict]:
-        """Apply input action on the environment.
+        """Apply input action on the wheel_legged_gym.
 
         Args:
             actions (torch.Tensor): Input actions to apply. Shape: (num_envs, num_actions)

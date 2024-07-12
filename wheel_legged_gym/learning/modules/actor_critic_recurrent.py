@@ -6,8 +6,8 @@ from __future__ import annotations
 import torch
 import torch.nn as nn
 
-from environment.learning.modules.actor_critic import ActorCritic, get_activation
-from environment.learning.utils import unpad_trajectories
+from wheel_legged_gym.learning.modules.actor_critic import ActorCritic, get_activation
+from wheel_legged_gym.learning.utils import unpad_trajectories
 
 
 class ActorCriticRecurrent(ActorCritic):

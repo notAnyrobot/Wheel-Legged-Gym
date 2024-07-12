@@ -3,13 +3,13 @@ import os
 from datetime import datetime
 
 import isaacgym
-from environment.envs import *
-from environment.utils import get_args, task_registry
+from wheel_legged_gym.envs import *
+from wheel_legged_gym.utils import get_args, task_registry
 import torch
 
 
 def test(args):
-    # set test environment arguments
+    # set test wheel_legged_gym arguments
     args.task = "wheel_legged"
     args.num_envs = 11
     # args.headless = True

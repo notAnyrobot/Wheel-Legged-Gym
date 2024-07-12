@@ -7,8 +7,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 
-from environment.learning.modules import ActorCritic
-from environment.learning.storage import RolloutStorage
+from wheel_legged_gym.learning.modules import ActorCritic
+from wheel_legged_gym.learning.storage import RolloutStorage
 
 
 class PPO:

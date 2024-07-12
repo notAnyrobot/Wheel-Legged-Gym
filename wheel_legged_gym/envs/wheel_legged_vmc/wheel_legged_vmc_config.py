@@ -28,7 +28,7 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from environment.envs.wheel_legged.wheel_legged_config import (
+from wheel_legged_gym.envs.wheel_legged.wheel_legged_config import (
     WheelLeggedCfg,
     WheelLeggedCfgPPO,
 )

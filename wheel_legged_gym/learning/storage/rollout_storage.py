@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import torch
 
-from environment.learning.utils import split_and_pad_trajectories
+from wheel_legged_gym.learning.utils import split_and_pad_trajectories
 
 
 class RolloutStorage:

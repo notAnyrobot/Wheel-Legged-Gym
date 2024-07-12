@@ -33,8 +33,8 @@ import os
 from datetime import datetime
 
 import isaacgym
-from environment.envs import *
-from environment.utils import get_args, export_policy_as_jit, task_registry, Logger
+from wheel_legged_gym.envs import *
+from wheel_legged_gym.utils import get_args, export_policy_as_jit, task_registry, Logger
 
 import torch
 
@@ -44,7 +44,7 @@ def test_env(args):
     # override some parameters for testing
     env_cfg.env.num_envs = min(env_cfg.env.num_envs, 10)
 
-    # prepare environment
+    # prepare wheel_legged_gym
     env, _ = task_registry.make_env(name=args.task, args=args, env_cfg=env_cfg)
     for i in range(int(10 * env.max_episode_length)):
         actions = 0.0 * torch.ones(env.num_envs, env.num_actions, device=env.device)

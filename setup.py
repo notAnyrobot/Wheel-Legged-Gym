@@ -2,7 +2,7 @@ from setuptools import find_packages
 from distutils.core import setup
 
 setup(
-    name="environment",
+    name="wheel_legged_gym",
     version="1.0.0",
     author="Hongxi Wang",
     license="BSD-3-Clause",

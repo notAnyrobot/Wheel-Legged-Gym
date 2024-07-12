@@ -36,10 +36,10 @@ import numpy as np
 from shutil import copyfile
 import ntpath
 
-from environment.learning.env.vec_env import VecEnv
-from environment.learning.runners.on_policy_runner import OnPolicyRunner
+from wheel_legged_gym.learning.env.vec_env import VecEnv
+from wheel_legged_gym.learning.runners.on_policy_runner import OnPolicyRunner
 
-from environment import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
+from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
 from .helpers import (
     get_args,
     update_cfg_from_args,
@@ -48,7 +48,7 @@ from .helpers import (
     set_seed,
     parse_sim_params,
 )
-from environment.envs.base.legged_robot_config import (
+from wheel_legged_gym.envs.base.legged_robot_config import (
     LeggedRobotCfg,
     LeggedRobotCfgPPO,
 )
@@ -111,7 +111,7 @@ class TaskRegistry:
                 copyfile(save_item, self.log_dir + "/" + base_file_name)
 
     def make_env(self, name, args=None, env_cfg=None) -> Tuple[VecEnv, LeggedRobotCfg]:
-        """Creates an environment either from a registered namme or from the provided config file.
+        """Creates an wheel_legged_gym either from a registered namme or from the provided config file.
 
         Args:
             name (string): Name of a registered env.
@@ -122,7 +122,7 @@ class TaskRegistry:
             ValueError: Error if no registered env corresponds to 'name'
 
         Returns:
-            isaacgym.VecTaskPython: The created environment
+            isaacgym.VecTaskPython: The created wheel_legged_gym
             Dict: the corresponding config file
         """
         # if no args passed get command line arguments
@@ -157,7 +157,7 @@ class TaskRegistry:
         """Creates the training algorithm  either from a registered namme or from the provided config file.
 
         Args:
-            env (isaacgym.VecTaskPython): The environment to train (TODO: remove from within the algorithm)
+            env (isaacgym.VecTaskPython): The wheel_legged_gym to train (TODO: remove from within the algorithm)
             name (string, optional): Name of a registered env. If None, the config file will be used instead. Defaults to None.
             args (Args, optional): Isaac Gym comand line arguments. If None get_args() will be called. Defaults to None.
             train_cfg (Dict, optional): Training config file. If None 'name' will be used to get the config file. Defaults to None.

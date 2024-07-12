@@ -28,7 +28,7 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from environment import WHEEL_LEGGED_GYM_ROOT_DIR, envs
+from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, envs
 from time import time
 from warnings import WarningMessage
 import numpy as np
@@ -41,15 +41,15 @@ import torch
 from torch import Tensor
 from typing import Tuple, Dict
 
-from environment import WHEEL_LEGGED_GYM_ROOT_DIR
-from environment.envs.base.base_task import BaseTask
-from environment.utils.terrain import Terrain
-from environment.utils.math import (
+from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR
+from wheel_legged_gym.envs.base.base_task import BaseTask
+from wheel_legged_gym.utils.terrain import Terrain
+from wheel_legged_gym.utils.math import (
     quat_apply_yaw,
     wrap_to_pi,
     torch_rand_sqrt_float,
 )
-from environment.utils.helpers import class_to_dict
+from wheel_legged_gym.utils.helpers import class_to_dict
 from .legged_robot_config import LeggedRobotCfg
 
 
@@ -240,7 +240,7 @@ class LeggedRobot(BaseTask):
             Resets some buffers
 
         Args:
-            env_ids (list[int]): List of environment ids which must be reset
+            env_ids (list[int]): List of wheel_legged_gym ids which must be reset
         """
         if len(env_ids) == 0:
             return
@@ -429,9 +429,9 @@ class LeggedRobot(BaseTask):
 
     # ------------- Callbacks --------------
     def _process_rigid_shape_props(self, props, env_id):
-        """Callback allowing to store/change/randomize the rigid shape properties of each environment.
-            Called During environment creation.
-            Base behavior: randomizes the friction of each environment
+        """Callback allowing to store/change/randomize the rigid shape properties of each wheel_legged_gym.
+            Called During wheel_legged_gym creation.
+            Base behavior: randomizes the friction of each wheel_legged_gym
 
         Args:
             props (List[gymapi.RigidShapeProperties]): Properties of each shape of the asset
@@ -477,8 +477,8 @@ class LeggedRobot(BaseTask):
         return props
 
     def _process_dof_props(self, props, env_id):
-        """Callback allowing to store/change/randomize the DOF properties of each environment.
-            Called During environment creation.
+        """Callback allowing to store/change/randomize the DOF properties of each wheel_legged_gym.
+            Called During wheel_legged_gym creation.
             Base behavior: stores position, velocity and torques limits defined in the URDF
 
         Args:
@@ -1264,8 +1264,8 @@ class LeggedRobot(BaseTask):
     def _create_envs(self):
         """Creates environments:
         1. loads the robot URDF/MJCF asset,
-        2. For each environment
-           2.1 creates the environment,
+        2. For each wheel_legged_gym
+           2.1 creates the wheel_legged_gym,
            2.2 calls DOF and Rigid shape properties callbacks,
            2.3 create actor with these properties and add them to the env
         3. Store indices of different bodies of the robot
@@ -1410,7 +1410,7 @@ class LeggedRobot(BaseTask):
             )
 
     def _get_env_origins(self):
-        """Sets environment origins. On rough terrain the origins are defined by the terrain platforms.
+        """Sets wheel_legged_gym origins. On rough terrain the origins are defined by the terrain platforms.
         Otherwise create a grid.
         """
         if self.cfg.terrain.mesh_type in ["heightfield", "trimesh"]:

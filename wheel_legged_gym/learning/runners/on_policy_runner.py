@@ -36,13 +36,13 @@ import statistics
 from torch.utils.tensorboard import SummaryWriter
 import torch
 
-from environment.learning.algorithms import PPO
-from environment.learning.modules import (
+from wheel_legged_gym.learning.algorithms import PPO
+from wheel_legged_gym.learning.modules import (
     ActorCritic,
     ActorCriticRecurrent,
     ActorCriticSequence,
 )
-from environment.learning.env import VecEnv
+from wheel_legged_gym.learning.env import VecEnv
 
 
 class OnPolicyRunner:

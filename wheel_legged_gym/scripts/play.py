@@ -28,13 +28,13 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from environment import WHEEL_LEGGED_GYM_ROOT_DIR
+from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR
 import os
 
 import isaacgym
 from isaacgym.torch_utils import *
-from environment.envs import *
-from environment.utils import get_args, export_policy_as_jit, task_registry, Logger
+from wheel_legged_gym.envs import *
+from wheel_legged_gym.utils import get_args, export_policy_as_jit, task_registry, Logger
 
 import numpy as np
 import torch
@@ -64,7 +64,7 @@ def play(args):
     env_cfg.domain_rand.randomize_default_dof_pos = False
     env_cfg.domain_rand.randomize_action_delay = False
 
-    # prepare environment
+    # prepare wheel_legged_gym
     env, _ = task_registry.make_env(name=args.task, args=args, env_cfg=env_cfg)
     obs, obs_history = env.get_observations()
     # load policy

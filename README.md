@@ -22,7 +22,7 @@ Related Links:
    - `cd Wheel-Legged-Gym && pip install -e .`
 
 ### Code Structure ###
-1. Each environment is defined by an env file (`legged_robot.py`) and a config file (`legged_robot_config.py`). The config file contains two classes: one containing  all the environment parameters (`LeggedRobotCfg`) and one for the training parameters (`LeggedRobotCfgPPo`).  
+1. Each wheel_legged_gym is defined by an env file (`legged_robot.py`) and a config file (`legged_robot_config.py`). The config file contains two classes: one containing  all the wheel_legged_gym parameters (`LeggedRobotCfg`) and one for the training parameters (`LeggedRobotCfgPPo`).  
 2. Both env and config classes use inheritance.  
 3. Each non-zero reward scale specified in `cfg` will add a function with a corresponding name to the list of elements which will be summed to get the total reward.  
 4. Tasks must be registered using `task_registry.register(name, EnvClass, EnvConfig, TrainConfig)`. This is done in `envs/__init__.py`, but can also be done from outside of this repository.  
@@ -55,15 +55,15 @@ Related Links:
    - wheel_legged_vmc: Using VMC to unify motion control of open-chain and closed-chain mechanisms facilitates deploying policy onto closed-chain robots.
    - wheel_legged_vmc_flat: Train robot in flat terrain (low VRAM requirements).
 
-### Adding a new environment ###
-The base environment `legged_robot` implements a rough terrain locomotion task. The corresponding cfg does not specify a robot asset (URDF/ MJCF) and has no reward scales. 
+### Adding a new wheel_legged_gym ###
+The base wheel_legged_gym `legged_robot` implements a rough terrain locomotion task. The corresponding cfg does not specify a robot asset (URDF/ MJCF) and has no reward scales. 
 
-1. Add a new folder to `envs/` with `'<your_env>_config.py`, which inherit from an existing environment cfgs  
+1. Add a new folder to `envs/` with `'<your_env>_config.py`, which inherit from an existing wheel_legged_gym cfgs  
 2. If adding a new robot:
     - Add the corresponding assets to `resources/`.
-    - In `cfg` set the asset path, define body names, default_joint_positions and PD gains. Specify the desired `train_cfg` and the name of the environment (python class).
+    - In `cfg` set the asset path, define body names, default_joint_positions and PD gains. Specify the desired `train_cfg` and the name of the wheel_legged_gym (python class).
     - In `train_cfg` set `experiment_name` and `run_name`
-3. (If needed) implement your environment in <your_env>.py, inherit from an existing environment, overwrite the desired functions and/or add your reward functions.
+3. (If needed) implement your wheel_legged_gym in <your_env>.py, inherit from an existing wheel_legged_gym, overwrite the desired functions and/or add your reward functions.
 4. Register your env in `isaacgym_anymal/envs/__init__.py`.
 5. Modify/Tune other parameters in your `cfg`, `cfg_train` as needed. To remove a reward set its scale to zero. Do not modify parameters of other envs!
 
