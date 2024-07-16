@@ -79,6 +79,8 @@ def make_runner(env: VecEnv, training_kwargs: dict) -> OnPolicyRunner:
     if resume:
         print(f"Loading model from; {CHECKPOINT_PATH}")
         runner.load(CHECKPOINT_PATH)
+        
+    return runner
          
                  
 def main():
