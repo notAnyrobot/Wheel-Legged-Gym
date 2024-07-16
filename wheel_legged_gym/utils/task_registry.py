@@ -197,7 +197,7 @@ class TaskRegistry:
                 # os.mkdir(log_root)
                 os.makedirs(log_root, exist_ok=True)
             self.log_dir = os.path.join(
-                log_root,
+                           log_root,
                 datetime.now().strftime("%b%d_%H-%M-%S")
                 + "_"
                 + train_cfg.runner.run_name

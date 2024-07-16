@@ -49,6 +49,26 @@ class VecEnv(ABC):
     device: torch.device
     """Device to use."""
 
+
+    def __init__(
+        self, observation_count, privileged_observation_count, device="cpu", environment_count=1, max_episode_length=-1
+    ):
+        """
+        Args:
+            observation_count (int): Number of observations per environment.
+            privileged_observation_count (int): Number of privileged observations per environment.
+            device (str): Device to use for the tensors.
+            environment_count (int): Number of environments to run in parallel.
+            max_episode_length (int): Maximum length of an episode. If -1, the episode length is not limited.
+        """
+        self.num_obs = observation_count
+        self.num_privileged_obs = privileged_observation_count
+
+        self.num_envs = environment_count
+        self.max_episode_length = max_episode_length
+        self.device = device
+
+
     """
     Operations.
     """

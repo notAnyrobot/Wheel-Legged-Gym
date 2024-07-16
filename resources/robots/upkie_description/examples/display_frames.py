@@ -66,7 +66,7 @@ if __name__ == "__main__":
             height=0.05,
             font_size=100,
         )
-        Rx = transformations.rotation_matrix(0.5 * np.pi, [1.0, 0.0, 0.0])
+        Rx = transformations.rotation_matrix(0.5 * pi, [1.0, 0.0, 0.0])
         Rz = transformations.rotation_matrix(0.5 * np.pi, [0.0, 0.0, 1.0])
         trans = transformations.translation_matrix([0.0, 0.0, 0.005 * FRAME_SCALE])
         handle["text"].set_transform(trans @ Rz @ Rx)
