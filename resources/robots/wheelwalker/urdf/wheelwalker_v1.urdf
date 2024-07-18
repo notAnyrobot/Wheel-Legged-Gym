@@ -17,50 +17,7 @@
   <!-- Specify some standard inertial calculations https://en.wikipedia.org/wiki/List_of_moments_of_inertia -->
   <!-- These make use of xacro's mathematical functionality -->
   <!-- This file is not a robot in and of itself, it just contains some useful tags that could be included in any robot -->
-  <!-- Specify some colours -->
-  <material name="Black">
-    <color rgba="0.1 0.1 0.1 1.0"/>
-  </material>
-  <material name="Blue">
-    <color rgba="0.0 0.0 0.8 1.0"/>
-  </material>
-  <material name="Green">
-    <color rgba="0.0 0.8 0.0 1.0"/>
-  </material>
-  <material name="Grey">
-    <color rgba="0.7 0.7 0.7 1.0"/>
-  </material>
-  <material name="Grey2">
-    <color rgba="0.9 0.9 0.9 1.0"/>
-  </material>
-  <material name="LightGrey">
-    <color rgba="0.6 0.6 0.6 1.0"/>
-  </material>
-  <material name="Red">
-    <color rgba="0.8 0.0 0.0 1.0"/>
-  </material>
-  <material name="White">
-    <color rgba="1.0 1.0 1.0 1.0"/>
-  </material>
-  <material name="yellow-skin">
-    <color rgba="1 0.7 0 1"/>
-  </material>
-  <material name="yellow-skin-dark">
-    <color rgba="0.9 0.6 0 1"/>
-  </material>
-  <!-- Specify some textures -->
-  <material name="Caster">
-    <texture filename="package://wheelwalker_description/materials/textures/wheelwalker_caster_texture.png"/>
-  </material>
-  <material name="Wheel_l">
-    <texture filename="package://wheelwalker_description/materials/textures/wheelwalker_wheel_left.png"/>
-  </material>
-  <material name="Wheel_r">
-    <texture filename="package://wheelwalker_description/materials/textures/wheelwalker_wheel_right.png"/>
-  </material>
-  <material name="RollLinks">
-    <texture filename="package://wheelwalker_description/materials/textures/wheelwalker_wheel_left.png"/>
-  </material>
+
   <!-- WheelWalker arm -->
   <!-- <xacro:include filename="$(find wheelwalker_description)/description/shoulder/shoulder_v1.urdf.xacro"/> -->
   <!-- <xacro:include filename="$(find wheelwalker_description)/description/upper_arm/upper_arm_v1.urdf.xacro"/> -->
@@ -124,10 +81,12 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/base_link.stl"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/base_link.stl"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.0"/>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -208,7 +167,9 @@
       <geometry>
         <cylinder length="0.08879999999999999" radius="0.0185"/>
       </geometry>
-      <material name="yellow-skin"/>
+      <material name="">
+        <color rgba="1 0.7 0 1"/>
+      </material>
     </visual>
   </link>
   <!-- <xacro:rigid_shape name="top_shoulder_mount_link" mass="1.0" color="yellow-skin">
@@ -249,7 +210,7 @@
                             mount_radius="${mount_radius}"
                             mount_length="${mount_length}"
                             color="yellow-skin"/> -->
-  <joint name="tail_pitch_joint" type="revolute">
+  <joint name="tail_pitch_joint" type="fixed">
     <origin rpy="0 -0.5235987755983333 0" xyz="-0.1852 0.0 -0.0653"/>
     <parent link="base_link"/>
     <child link="tail_link"/>
@@ -263,7 +224,7 @@
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                    <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/tail_link.STL"/>
+                    <mesh filename="../meshes/wheelwalker_v0.1/tail_link.STL"/>
                 </geometry>
                 <material name="color"/>
             </visual>
@@ -288,9 +249,11 @@
     <visual>
       <origin rpy="0 0.5235987755983333 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/tail_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/tail_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -358,17 +321,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_hip_yaw_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_hip_yaw_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.08879999999999999" radius="0.0185"/>
-      </geometry>
-      <material name="yellow-skin"/>
-    </visual>
+
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -402,17 +361,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.08175"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
-    <visual>
-      <origin rpy="0 1.570796326795 0" xyz="0 0 0.08175"/>
-      <geometry>
-        <cylinder length="0.08879999999999999" radius="0.0185"/>
-      </geometry>
-      <material name="yellow-skin"/>
-    </visual>
+
     <collision>
       <origin rpy="0 1.570796326795 0" xyz="0 0 0.08175"/>
       <geometry>
@@ -446,17 +401,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0.07525 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
-    <visual>
-      <origin rpy="1.570796326795 0 0" xyz="0 0.07525 0"/>
-      <geometry>
-        <cylinder length="0.08879999999999999" radius="0.0185"/>
-      </geometry>
-      <material name="yellow-skin"/>
-    </visual>
+
     <collision>
       <origin rpy="1.570796326795 0 0" xyz="0 0.07525 0"/>
       <geometry>
@@ -495,9 +446,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_thigh_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_thigh_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -557,9 +510,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_tibia_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_tibia_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -616,9 +571,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_foot_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_foot_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -655,9 +612,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/left_wheel_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/left_wheel_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -692,17 +651,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_hip_yaw_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_hip_yaw_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
-    <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <geometry>
-        <cylinder length="0.08879999999999999" radius="0.0185"/>
-      </geometry>
-      <material name="yellow-skin"/>
-    </visual>
+
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
@@ -736,17 +691,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0.08175"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_hip_roll_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
-    <visual>
-      <origin rpy="0 1.570796326795 0" xyz="0 0 0.08175"/>
-      <geometry>
-        <cylinder length="0.08879999999999999" radius="0.0185"/>
-      </geometry>
-      <material name="yellow-skin"/>
-    </visual>
+
     <collision>
       <origin rpy="0 1.570796326795 0" xyz="0 0 0.08175"/>
       <geometry>
@@ -780,17 +731,13 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 -0.07525 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_hip_pitch_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
-    <visual>
-      <origin rpy="1.570796326795 0 0" xyz="0 -0.07525 0"/>
-      <geometry>
-        <cylinder length="0.08879999999999999" radius="0.0185"/>
-      </geometry>
-      <material name="yellow-skin"/>
-    </visual>
+
     <collision>
       <origin rpy="1.570796326795 0 0" xyz="0 -0.07525 0"/>
       <geometry>
@@ -829,9 +776,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_thigh_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_thigh_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -891,9 +840,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_tibia_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_tibia_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -950,9 +901,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_foot_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_foot_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
@@ -989,9 +942,11 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="package://wheelwalker_description/meshes/wheelwalker_v0.1/right_wheel_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="../meshes/wheelwalker_v0.1/right_wheel_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
-      <material name="LightGrey"/>
+      <material name="">   
+        <color rgba="0.6 0.6 0.6 1.0"/>
+      </material>
     </visual>
 
     <collision>
