@@ -10,7 +10,7 @@ import torch
 
 def test(args):
     # set test wheel_legged_gym arguments
-    args.task = "wheel_legged"
+    args.task = "wheelwalker"
     args.num_envs = 11
     # args.headless = True
     

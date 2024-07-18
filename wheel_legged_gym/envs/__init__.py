@@ -41,6 +41,8 @@ from .wheel_legged_vmc_flat.wheel_legged_vmc_flat_config import (
     WheelLeggedVMCFlatCfgPPO,
 )
 
+from .wheelwalker.wheelwalker_config import WheelWalkerCfg, WheelWalkerCfgPPO
+
 
 import os
 
@@ -57,4 +59,11 @@ task_registry.register(
     LeggedRobotVMC,
     WheelLeggedVMCFlatCfg(),
     WheelLeggedVMCFlatCfgPPO(),
+)
+
+task_registry.register(
+    "wheelwalker",
+    LeggedRobot,
+    WheelWalkerCfg(),
+    WheelWalkerCfgPPO(),
 )
