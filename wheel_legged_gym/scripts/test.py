@@ -11,8 +11,8 @@ import torch
 def test(args):
     # set test wheel_legged_gym arguments
     args.task = "wheelwalker"
-    args.num_envs = 11
-    # args.headless = True
+    # args.num_envs = 11
+    args.headless = True
     
     env, env_cfg = task_registry.make_env(name=args.task, args=args)
     ppo_runner, train_cfg = task_registry.make_alg_runner(

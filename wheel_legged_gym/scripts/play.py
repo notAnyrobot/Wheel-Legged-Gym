@@ -41,6 +41,10 @@ import torch
 
 
 def play(args):
+    
+    # testing parameters 
+    args.task = "wheelwalker"
+    
     env_cfg, train_cfg = task_registry.get_cfgs(name=args.task)
     # override some parameters for testing
     env_cfg.env.episode_length_s = 20
