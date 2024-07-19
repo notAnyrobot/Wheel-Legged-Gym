@@ -15,13 +15,13 @@ class WheelWalkerCfg(LeggedRobotCfg):
         num_actions = 6
 
     class init_state(LeggedRobotCfg.init_state):
-        pos = [0.0, 0.0, 0.4]  # x,y,z [m]
+        pos = [0.0, 0.0, 0.5]  # x,y,z [m]
         default_joint_angles = {  # target angles when action = 0.0
-            "left_hip_pitch_joint": 0.5,
-            "left_knee_pitch_joint": 0.35,
+            "left_hip_pitch_joint": 0.0,
+            "left_knee_pitch_joint": 0.0,
             "left_wheel_joint": 0.0,
-            "right_hip_pitch_joint": -0.5,
-            "right_knee_pitch_joint": -0.35,
+            "right_hip_pitch_joint": -0.0,
+            "right_knee_pitch_joint": -0.0,
             "right_wheel_joint": 0.0,
             "tail_joint": 0.0,
         }
@@ -51,6 +51,9 @@ class WheelWalkerCfg(LeggedRobotCfg):
         terminate_after_contacts_on = ["base"]
         self_collisions = 1  # 1 to disable, 0 to enable...bitwise filter
         flip_visual_attachments = False
+        
+    class rewards(LeggedRobotCfg.rewards):
+        base_height_target = 0.5
 
 
 class WheelWalkerCfgPPO(LeggedRobotCfgPPO):
