@@ -7,6 +7,12 @@ from wheel_legged_gym.envs.base.legged_robot_config import (
 class TwipCfg(LeggedRobotCfg):
 
     class env(LeggedRobotCfg.env):
+        num_observations = (
+            15  # 3 + 3 + 3 + num_joints + num_joints + num_actions
+        )
+        num_privileged_obs = (
+            num_observations + 7 * 11 + 3 + 6 * 5 + 3 + 3
+        )  # if not None a priviledge_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise
         num_actions = 2
 
     class init_state(LeggedRobotCfg.init_state):
