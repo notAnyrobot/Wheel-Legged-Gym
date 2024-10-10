@@ -3,22 +3,28 @@ from wheel_legged_gym.envs.base.legged_robot_config import (
     LeggedRobotCfgPPO,
 )
 
+PI = 3.14159265359
+
 
 class TwipCfg(LeggedRobotCfg):
 
     class env(LeggedRobotCfg.env):
+        num_actions = 2
         num_observations = (
             15  # 3 + 3 + 3 + num_joints + num_joints + num_actions
         )
         num_privileged_obs = (
-            num_observations + 7 * 11 + 3 + 6 * 5 + 3 + 3
+            num_observations + 7 * 11 + 3 + 5 * num_actions + 3 + 3
         )  # if not None a priviledge_obs_buf will be returned by step() (critic obs for assymetric training). None is returned otherwise
-        num_actions = 2
 
     class init_state(LeggedRobotCfg.init_state):
         pos = [0.0, 0.0, 0.5]
         default_joint_angles = {
+            "left_hip_pitch_joint": 0.25 * PI,
+            "left_knee_pitch_joint": -0.25 * PI,
             "left_wheel_joint": 0.0,
+            "right_hip_pitch_joint": 0.25 * PI,
+            "right_knee_pitch_joint": -0.25 * PI,
             "right_wheel_joint": 0.0,
         }
 

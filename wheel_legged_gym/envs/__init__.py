@@ -47,8 +47,6 @@ from .wheel_legged_vmc_flat.wheel_legged_vmc_flat_config import (
     WheelLeggedVMCFlatCfg,
     WheelLeggedVMCFlatCfgPPO,
 )
-from .wheelwalker.twip import Twip
-from .wheelwalker.twip_config import TwipCfg, TwipCfgPPO
 from .wheelwalker.wheelwalker_config import WheelWalkerCfg, WheelWalkerCfgPPO
 
 task_registry.register(
@@ -73,6 +71,9 @@ task_registry.register(
     WheelWalkerCfg(),
     WheelWalkerCfgPPO(),
 )
+
+from .twip.twip import Twip
+from .twip.twip_config import TwipCfg, TwipCfgPPO
 
 task_registry.register(
     "twip",
