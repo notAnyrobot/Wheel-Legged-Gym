@@ -53,5 +53,21 @@ class TwipCfg(LeggedRobotCfg):
 
 
 class TwipCfgPPO(LeggedRobotCfgPPO):
+
+    class policy:
+        init_noise_std = 0.5
+        actor_hidden_dims = [128, 64, 32]
+        critic_hidden_dims = [256, 128, 64]
+        activation = (
+            "elu"  # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
+        )
+
+        # only for ActorCriticSequence
+        num_encoder_obs = (
+            TwipCfg.env.obs_history_length * TwipCfg.env.num_observations
+        )
+        latent_dim = 3  # at least 3 to estimate base linear velocity
+        encoder_hidden_dims = [128, 64]
+
     class runner(LeggedRobotCfgPPO.runner):
         experiment_name = "twip"

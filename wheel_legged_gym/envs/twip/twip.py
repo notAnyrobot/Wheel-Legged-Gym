@@ -1,4 +1,5 @@
 import torch
+from isaacgym.torch_utils import quat_rotate_inverse
 
 from wheel_legged_gym.envs.base.legged_robot import LeggedRobot
 
@@ -8,10 +9,10 @@ class Twip(LeggedRobot):
     def _compute_torques(self, actions):
         # actions = [left_wheel, right_wheel]
         action_pos = actions * torch.tensor(
-            self.control.pos_action_scale, deveice=self.device
+            self.cfg.control.pos_action_scale, device=self.device
         )
         action_vel = actions * torch.tensor(
-            self.control.vel_action_scale, device=self.device
+            self.cfg.control.vel_action_scale, device=self.device
         )
         torques = self.p_gains * (
             action_pos + self.default_dof_pos - self.dof_pos
