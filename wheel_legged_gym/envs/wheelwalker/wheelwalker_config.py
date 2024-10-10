@@ -53,7 +53,7 @@ class WheelWalkerCfg(LeggedRobotCfg):
         flip_visual_attachments = False
         
     class rewards(LeggedRobotCfg.rewards):
-        base_height_target = 0.5
+        base_height_target = 0.51
 
 
 class WheelWalkerCfgPPO(LeggedRobotCfgPPO):
