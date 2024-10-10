@@ -48,6 +48,9 @@ class TwipCfg(LeggedRobotCfg):
     class rewards(LeggedRobotCfg.rewards):
         base_height_target = 0.51
 
+        class scales(LeggedRobotCfg.rewards.scales):
+            dof_pos_limits = 0.0
+
 
 class TwipCfgPPO(LeggedRobotCfgPPO):
     class runner(LeggedRobotCfgPPO.runner):
