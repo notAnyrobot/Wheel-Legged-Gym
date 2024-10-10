@@ -23,8 +23,8 @@ class TwipCfg(LeggedRobotCfg):
         }
 
     class control(LeggedRobotCfg.control):
-        pos_action_scale = 0.5
-        vel_action_scale = 10.0
+        pos_action_scale = [0.0, 0.0]
+        vel_action_scale = [1.0, 1.0]
         stiffness = {
             "left_wheel_joint": 0.0,
             "right_wheel_joint": 0.0,
