@@ -28,7 +28,14 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
+import os
+
+from wheel_legged_gym import (
+    WHEEL_LEGGED_GYM_ENVS_DIR,
+    WHEEL_LEGGED_GYM_ROOT_DIR,
+)
+from wheel_legged_gym.utils.task_registry import task_registry
+
 from .base.legged_robot import LeggedRobot
 from .wheel_legged.wheel_legged_config import WheelLeggedCfg, WheelLeggedCfgPPO
 from .wheel_legged_vmc.wheel_legged_vmc import LeggedRobotVMC
@@ -40,19 +47,17 @@ from .wheel_legged_vmc_flat.wheel_legged_vmc_flat_config import (
     WheelLeggedVMCFlatCfg,
     WheelLeggedVMCFlatCfgPPO,
 )
-
+from .wheelwalker.twip_config import TwipCfg, TwipCfgPPO
 from .wheelwalker.wheelwalker_config import WheelWalkerCfg, WheelWalkerCfgPPO
-
-
-import os
-
-from wheel_legged_gym.utils.task_registry import task_registry
 
 task_registry.register(
     "wheel_legged", LeggedRobot, WheelLeggedCfg(), WheelLeggedCfgPPO()
 )
 task_registry.register(
-    "wheel_legged_vmc", LeggedRobotVMC, WheelLeggedVMCCfg(), WheelLeggedVMCCfgPPO()
+    "wheel_legged_vmc",
+    LeggedRobotVMC,
+    WheelLeggedVMCCfg(),
+    WheelLeggedVMCCfgPPO(),
 )
 task_registry.register(
     "wheel_legged_vmc_flat",
@@ -66,4 +71,11 @@ task_registry.register(
     LeggedRobot,
     WheelWalkerCfg(),
     WheelWalkerCfgPPO(),
+)
+
+task_registry.register(
+    "twip",
+    LeggedRobot,
+    TwipCfg(),
+    TwipCfgPPO(),
 )
