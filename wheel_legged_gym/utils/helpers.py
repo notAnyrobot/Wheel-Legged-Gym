@@ -28,15 +28,18 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-import os
 import copy
-import torch
-import numpy as np
+import os
 import random
-from isaacgym import gymapi
-from isaacgym import gymutil
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR, WHEEL_LEGGED_GYM_ENVS_DIR
+import numpy as np
+import torch
+from isaacgym import gymapi, gymutil
+
+from wheel_legged_gym import (
+    WHEEL_LEGGED_GYM_ENVS_DIR,
+    WHEEL_LEGGED_GYM_ROOT_DIR,
+)
 
 
 def class_to_dict(obj) -> dict:
@@ -271,7 +274,9 @@ class PolicyExporterLSTM(torch.nn.Module):
         )
 
     def forward(self, x):
-        out, (h, c) = self.memory(x.unsqueeze(0), (self.hidden_state, self.cell_state))
+        out, (h, c) = self.memory(
+            x.unsqueeze(0), (self.hidden_state, self.cell_state)
+        )
         self.hidden_state[:] = h
         self.cell_state[:] = c
         return self.actor(out.squeeze(0))
@@ -287,3 +292,9 @@ class PolicyExporterLSTM(torch.nn.Module):
         self.to("cpu")
         traced_script_module = torch.jit.script(self)
         traced_script_module.save(path)
+
+
+class PolicyExporterSequnce(torch.nn.Module):
+    def __init__(self, actor_critic):
+        super().__init__()
+        self.actor = copy.deepcopy(actor_critic.actor)

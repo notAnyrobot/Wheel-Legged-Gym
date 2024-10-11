@@ -28,23 +28,28 @@
 #
 # Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
-from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR
 import os
 
 import isaacgym
-from isaacgym.torch_utils import *
-from wheel_legged_gym.envs import *
-from wheel_legged_gym.utils import get_args, export_policy_as_jit, task_registry, Logger
-
 import numpy as np
 import torch
+from isaacgym.torch_utils import *
+
+from wheel_legged_gym import WHEEL_LEGGED_GYM_ROOT_DIR
+from wheel_legged_gym.envs import *
+from wheel_legged_gym.utils import (
+    Logger,
+    export_policy_as_jit,
+    get_args,
+    task_registry,
+)
 
 
 def play(args):
-    
-    # testing parameters 
-    args.task = "wheelwalker"
-    
+
+    # testing parameters
+    # args.task = "wheelwalker"
+
     env_cfg, train_cfg = task_registry.get_cfgs(name=args.task)
     # override some parameters for testing
     env_cfg.env.episode_length_s = 20
@@ -99,7 +104,9 @@ def play(args):
     )  # number of steps before print average episode rewards
     camera_position = np.array(env_cfg.viewer.pos, dtype=float)
     camera_vel = np.array([1.0, 1.0, 0.0])
-    camera_direction = np.array(env_cfg.viewer.lookat) - np.array(env_cfg.viewer.pos)
+    camera_direction = np.array(env_cfg.viewer.lookat) - np.array(
+        env_cfg.viewer.pos
+    )
     img_idx = 0
     latent = None
 
@@ -177,7 +184,9 @@ def play(args):
             if CoM_offset_compensate:
                 logger.log_states({"command_x": vel_cmd[robot_index].item()})
             else:
-                logger.log_states({"command_x": env.commands[robot_index, 0].item()})
+                logger.log_states(
+                    {"command_x": env.commands[robot_index, 0].item()}
+                )
             if latent is not None:
                 logger.log_states(
                     {
@@ -194,22 +203,32 @@ def play(args):
                         {
                             "base_vel_yaw_obs": obs[robot_index, 2].item()
                             / env.cfg.normalization.obs_scales.ang_vel,
-                            "dof_pos_obs": obs[robot_index, 9 + joint_index].item()
+                            "dof_pos_obs": obs[
+                                robot_index, 9 + joint_index
+                            ].item()
                             / env.cfg.normalization.obs_scales.dof_pos
-                            + env.default_dof_pos[robot_index, joint_index].item(),
-                            "dof_vel_obs": obs[robot_index, 15 + joint_index].item()
+                            + env.default_dof_pos[
+                                robot_index, joint_index
+                            ].item(),
+                            "dof_vel_obs": obs[
+                                robot_index, 15 + joint_index
+                            ].item()
                             / env.cfg.normalization.obs_scales.dof_vel,
                         }
                     )
                     logger.log_states(
                         {
-                            "base_vel_yaw_est": latent[robot_index, 3 + 2].item()
+                            "base_vel_yaw_est": latent[
+                                robot_index, 3 + 2
+                            ].item()
                             / env.cfg.normalization.obs_scales.ang_vel,
                             "dof_pos_est": latent[
                                 robot_index, 3 + 9 + joint_index
                             ].item()
                             / env.cfg.normalization.obs_scales.dof_pos
-                            + env.default_dof_pos[robot_index, joint_index].item(),
+                            + env.default_dof_pos[
+                                robot_index, joint_index
+                            ].item(),
                             "dof_vel_est": latent[
                                 robot_index, 3 + 15 + joint_index
                             ].item()

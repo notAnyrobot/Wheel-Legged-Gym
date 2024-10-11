@@ -146,7 +146,7 @@
     </inertial>
   </link>
   <joint name="left_hip_pitch_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0.07525 0"/>
+    <origin rpy="0 1.3962634015954636 0" xyz="0 0.07525 0"/>
     <parent link="left_hip_pitch_link"/>
     <child link="left_thigh_link"/>
     <axis xyz="0 1 0"/>
@@ -181,7 +181,7 @@
 
 
   <joint name="left_knee_pitch_joint" type="fixed">
-    <origin rpy="0 -1.570796326795 0 " xyz="0.04 0 -0.25"/>
+    <origin rpy="0 -2.5132741228718345 0 " xyz="0.04 0 -0.25"/>
     <parent link="left_thigh_link"/>
     <child link="left_tibia_link"/>
     <axis xyz="0 1 0"/>
@@ -380,7 +380,7 @@
     </inertial>
   </link>
   <joint name="right_hip_pitch_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 -0.07525 0"/>
+    <origin rpy="0 1.3962634015954636 0" xyz="0 -0.07525 0"/>
     <parent link="right_hip_pitch_link"/>
     <child link="right_thigh_link"/>
     <axis xyz="0 1 0"/>
@@ -414,7 +414,7 @@
   </link>
 
   <joint name="right_knee_pitch_joint" type="fixed">
-    <origin rpy="0 -1.570796326795 0 " xyz="0.04 0 -0.25"/>
+    <origin rpy="0 -2.5132741228718345 0 " xyz="0.04 0 -0.25"/>
     <parent link="right_thigh_link"/>
     <child link="right_tibia_link"/>
     <axis xyz="0 1 0"/>
